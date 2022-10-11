@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         kid.Initialize(playerIndex);
+        playerSteps.Initialize(playerIndex);
     }
 
     /*

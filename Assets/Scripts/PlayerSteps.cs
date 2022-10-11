@@ -18,7 +18,7 @@ public class PlayerSteps : MonoBehaviour
         private set => stepSize = value;
     }
 
-    private void Initialize(int _playerIndex)
+    public void Initialize(int _playerIndex)
     {
         PlayerIndex = _playerIndex;
     }
