@@ -11,7 +11,8 @@ public class MinigameManager : MonoBehaviour
     {
         TETE,
         MOU,
-        LACHER
+        LACHER,
+        NONE
     }
 
     private Game currentMG;
@@ -46,6 +47,9 @@ public class MinigameManager : MonoBehaviour
             case MG.LACHER:
                 currentMG = gameLacher;
                 break;
+            case MG.NONE:
+                currentMG = null;
+                return;
         }
         currentMG.StartGame();
     }
