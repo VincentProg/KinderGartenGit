@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     public PlayerSteps playerSteps { get; private set; }
     public PlayerUI playerUI { get; private set; }
+    private Animator anim;
 
     [SerializeField] private Camera playerCamera;
 
@@ -27,5 +28,18 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerSteps.Initialize(playerIndex, GameDatasManager.instance.WinStep, GameDatasManager.instance.endManager.End);
+        anim = GetComponent<Animator>();
+    }
+    public void PullLeash( int id)
+    {
+        Leash.instance.ChangeState(PlayerIndex, id);
+        anim.SetBool("isPulling", true);
+    }
+
+    public void Relax()
+    {
+        Leash.instance.ChangeState(PlayerIndex, 0);
+        anim.SetBool("isPulling", false);
+
     }
 }

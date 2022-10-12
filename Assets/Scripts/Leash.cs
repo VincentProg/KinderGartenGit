@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Leash : MonoBehaviour
 {
+    public static Leash instance;
     [Range(0,2)]
     int stateP1;
     int stateP2;
@@ -17,12 +18,26 @@ public class Leash : MonoBehaviour
     public UnityEvent maxTimeWroughtUpReached;
     private bool isEnded;
 
+    [SerializeField]
+    LineRenderer l1, l2;
+    [SerializeField]
+    Transform pos1, pos2, posKid;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     public void Update()
     {
         if (isEnded) return;
 
-        if(stateP1 == 2 && stateP2 == 2)
+        if(stateP1 == 1 && stateP2 == 1)
         {
+            Debug.Log(currenTimerWroughtUp);
             currenTimerWroughtUp += Time.deltaTime;
             if(currenTimerWroughtUp >= maxTimeWroughtUp)
             {
@@ -32,21 +47,28 @@ public class Leash : MonoBehaviour
         {
             currenTimerWroughtUp = 0;
         }
+
+        l1.SetPosition(0, pos1.position);
+        l1.SetPosition(1, posKid.position);
+        l2.SetPosition(0, pos2.position);
+        l2.SetPosition(1, posKid.position);
+       
     }
 
-    public void ChangeStateP1(int IDstate)
+    public void ChangeState(int idPlayer, int idState)
     {
-        stateP1 = IDstate;
+        if (idPlayer == 1)
+            stateP1 = idState;
+        else
+            stateP2 = idState;
     }
 
-    public void ChangeStateP2(int IDstate)
-    {
-        stateP2 = IDstate;
-    }
 
     public void OnMaxTimeWroughtUpdReached()
     {
         maxTimeWroughtUpReached.Invoke();
+        isEnded = true;
+        Debug.Log("ChildDead");
     }
 
 }
