@@ -11,12 +11,12 @@ public class EndManager : MonoBehaviour
             if (player.PlayerIndex == _playerIndex)
             {
                 // Win
-                player.playerUI.EndUI(true);
+                player.playerUI.FadeIn(Color.black, 1f, () => player.playerUI.FadeOut(Color.black, 1f, () => player.playerUI.EndUI(true)));
             }
             else
             {
                 // Lose
-                player.playerUI.EndUI(false);
+                player.playerUI.FadeIn(Color.black, 1f, () => player.playerUI.FadeOut(Color.black, 1f, () => player.playerUI.EndUI(false)));
             }
         }
     }
@@ -27,7 +27,7 @@ public class EndManager : MonoBehaviour
 
         foreach (Player player in players)
         {
-            player.playerUI.EndUI(false);
+            player.playerUI.FadeIn(Color.black, 1f, () => player.playerUI.FadeOut(Color.black, 1f, () => player.playerUI.EndUI(false)));
         }
     }
 }
