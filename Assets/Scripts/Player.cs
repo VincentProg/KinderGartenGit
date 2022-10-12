@@ -13,40 +13,33 @@ public class Player : MonoBehaviour
         }
     }
 
-    private PlayerSteps playerSteps;
-        
-    [SerializeField] private Kid kid;
-    public Kid Kid
-    {
-        get => kid;
-        private set => kid = value;
-    }
+    public PlayerSteps playerSteps { get; private set; }
+    public PlayerUI playerUI { get; private set; }
+    private Animator anim;
+
+    [SerializeField] private Camera playerCamera;
 
     private void Awake()
     {
         playerSteps = GetComponent<PlayerSteps>();
+        playerUI = GetComponent<PlayerUI>();
     }
 
     private void Start()
     {
-        kid.Initialize(playerIndex);
-        playerSteps.Initialize(playerIndex);
+        playerSteps.Initialize(playerIndex, GameDatasManager.instance.WinStep, GameDatasManager.instance.endManager.End);
+        anim = GetComponent<Animator>();
+    }
+    public void PullLeash( int id)
+    {
+        Leash.instance.ChangeState(PlayerIndex, id);
+        anim.SetBool("isPulling", true);
     }
 
-    /*
-     * DEBUG
-     */
-    private void Update()
+    public void Relax()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            playerSteps.MoveSteps(-1);
-            kid.MoveKid(-1, playerSteps.StepSize, null);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            playerSteps.MoveSteps(1);
-            kid.MoveKid(1, playerSteps.StepSize, null);
-        }
+        Leash.instance.ChangeState(PlayerIndex, 0);
+        anim.SetBool("isPulling", false);
+
     }
 }

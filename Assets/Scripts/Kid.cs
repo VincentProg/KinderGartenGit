@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Kid : MonoBehaviour
 {
-    [HideInInspector] public int PlayerIndex;
-
-    private Action<int, bool> afterKidMoved;
+    private Action<bool> afterKidMoved;
     private Coroutine kidMoveCoroutine;
+
+    private bool isChoked;
 
     [SerializeField] private float moveTime;
 
-    public void Initialize(int _playerIndex)
-    {
-        PlayerIndex = _playerIndex;
-    }
-    
-    public void MoveKid(int _steps, float _stepSize, Action<int, bool> _afterKidMoved)
+    public void MoveKid(int _steps, float _stepSize, Action<bool> _afterKidMoved)
     {
         afterKidMoved = _afterKidMoved;
         
@@ -45,6 +40,17 @@ public class Kid : MonoBehaviour
             yield return null;
         }
 
-        afterKidMoved?.Invoke(PlayerIndex, true);
+        afterKidMoved?.Invoke(true);
+    }
+
+    public void ChokeState(bool _isChoked)
+    {
+        if (isChoked && _isChoked)
+        {
+            // Explode ?
+            return;
+        }
+        
+        isChoked = _isChoked;
     }
 }

@@ -61,11 +61,6 @@ public class InGameButton : MonoBehaviour
         }
     }
 
-    private void DoActionUnpress()
-    {
-        unpressEvent.Invoke();
-    }
-
     private void OnSuccess()
     {
         Debug.Log("Success");

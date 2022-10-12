@@ -1,8 +1,13 @@
+using System;
 using UnityEngine;
 
 public class PlayerSteps : MonoBehaviour
 {
     [HideInInspector] public int PlayerIndex;
+
+    private Action<int> onWinAction;
+
+    private int winStep;
     
     private int steps;
     public int Steps
@@ -18,9 +23,11 @@ public class PlayerSteps : MonoBehaviour
         private set => stepSize = value;
     }
 
-    public void Initialize(int _playerIndex)
+    public void Initialize(int _playerIndex, int _winStep, Action<int> _onWinAction)
     {
         PlayerIndex = _playerIndex;
+        winStep = _winStep;
+        onWinAction = _onWinAction;
     }
 
     public void MoveSteps(int _steps)
@@ -29,5 +36,10 @@ public class PlayerSteps : MonoBehaviour
             return;
 
         steps += _steps;
+
+        if (steps >= winStep)
+        {
+            onWinAction?.Invoke(PlayerIndex);
+        }
     }
 }
