@@ -13,40 +13,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private PlayerSteps playerSteps;
-        
-    [SerializeField] private Kid kid;
-    public Kid Kid
-    {
-        get => kid;
-        private set => kid = value;
-    }
+    public PlayerSteps playerSteps { get; private set; }
+    public PlayerUI playerUI { get; private set; }
+
+    [SerializeField] private Camera playerCamera;
 
     private void Awake()
     {
         playerSteps = GetComponent<PlayerSteps>();
+        playerUI = GetComponent<PlayerUI>();
     }
 
     private void Start()
     {
-        kid.Initialize(playerIndex);
-        playerSteps.Initialize(playerIndex);
-    }
-
-    /*
-     * DEBUG
-     */
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            playerSteps.MoveSteps(-1);
-            kid.MoveKid(-1, playerSteps.StepSize, null);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            playerSteps.MoveSteps(1);
-            kid.MoveKid(1, playerSteps.StepSize, null);
-        }
+        playerSteps.Initialize(playerIndex, GameDatasManager.instance.WinStep, GameDatasManager.instance.endManager.End);
     }
 }
