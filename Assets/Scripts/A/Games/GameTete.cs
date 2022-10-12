@@ -11,12 +11,10 @@ public class GameTete : Game
     
     public override void PressButton(int id)
     {
-        Debug.Log(id);
     }
     
     public override void ReleaseButton(int id)
     {
-        Debug.Log(id);
     }
     
     

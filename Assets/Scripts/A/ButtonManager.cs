@@ -5,28 +5,25 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
-    public static ButtonManager instance;
+    public MinigameManager minigameManager;
 
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else Destroy(this);
-    }
+    /*
+     * KeyCodes des boutons de pression. De l'intérieur vers l'extérieur
+     */
+    public KeyCode[] pressionLevelsButton;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        for (int i = 0; i < pressionLevelsButton.Length; i++)
         {
-            MinigameManager.instance.PressButton(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            MinigameManager.instance.PressButton(2);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            MinigameManager.instance.PressButton(3);
+            if (Input.GetKeyDown(pressionLevelsButton[i]))
+            {
+                minigameManager.PressButton(i + 1);
+            }
+            if (Input.GetKeyUp(pressionLevelsButton[i]))
+            {
+                minigameManager.ReleaseButton(i + 1);
+            }
         }
     }
 }
