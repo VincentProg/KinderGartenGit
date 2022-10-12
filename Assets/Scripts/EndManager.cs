@@ -4,7 +4,7 @@ public class EndManager : MonoBehaviour
 {
     public void End(int _playerIndex)
     {
-        Player[] players = FindObjectsOfType<Player>();
+        Player[] players = GameDatasManager.instance.players;
 
         foreach (Player player in players)
         {
@@ -18,6 +18,16 @@ public class EndManager : MonoBehaviour
                 // Lose
                 player.playerUI.EndUI(false);
             }
+        }
+    }
+
+    public void PlayersLose()
+    {
+        Player[] players = GameDatasManager.instance.players;
+
+        foreach (Player player in players)
+        {
+            player.playerUI.EndUI(false);
         }
     }
 }
