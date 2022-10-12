@@ -32,6 +32,14 @@ public class MinigameManager : MonoBehaviour
         StartMinigame(MG.TETE);
     }
 
+    private void Update()
+    {
+        if (currentMG != null)
+        {
+            currentMG.Update();
+        }
+    }
+
     public void StartMinigame(MG game)
     {
         if (currentMG != null)

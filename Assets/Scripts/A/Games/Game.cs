@@ -8,4 +8,5 @@ public class Game
     public virtual void StopGame(){}
     public virtual void PressButton(int id){}
     public virtual void ReleaseButton(int id){}
+    public virtual void Update(){}
 }
