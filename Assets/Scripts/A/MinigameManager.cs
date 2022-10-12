@@ -19,6 +19,11 @@ public class MinigameManager : MonoBehaviour
     private Game gameTete = new GameTete();
     private Game gameMou = new GameMou();
     private Game gameLacher = new GameLacher();
+
+    /*
+     * Le niveau de pression correspond au nombre de boutons pressés. Si 3 boutons au repos, pressionLevel = 3
+     */
+    private int pressionLevel = 2;
     
     private void Awake()
     {
@@ -62,15 +67,23 @@ public class MinigameManager : MonoBehaviour
         currentMG.StartGame();
     }
 
+    public int GetPressionLevel()
+    {
+        return pressionLevel;
+    }
+
     public void PressButton(int id)
     {
         if(currentMG != null)
             currentMG.PressButton(id);
+        pressionLevel = id;
     }
     public void ReleaseButton(int id)
     {
         if(currentMG != null)
             currentMG.ReleaseButton(id);
+        
+        pressionLevel = id - 1;
     }
 
 }
