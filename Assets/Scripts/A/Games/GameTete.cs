@@ -13,7 +13,6 @@ public class GameTete : Game
     private float timer;
 
     private bool _gameStarted;
-    private bool _dualStarted;
 
     public override void StartGame()
     {
@@ -23,7 +22,6 @@ public class GameTete : Game
         _P1Started = false;
         _P2Started = false;
         _gameStarted = true;
-        _dualStarted = false;
         
         PopupManager.instance.showPopup("Tirez la laisse au maximum ! Le premier à lacher dans les 5 prochaines secondes a perdu.", Color.white, new Vector2(
             0, 100), 1); 
@@ -37,7 +35,6 @@ public class GameTete : Game
         {
             if (_P1Started && _P2Started)
             {
-                _dualStarted = true;
                 timer += Time.deltaTime;
                 if (timer <= 5f)
                 {

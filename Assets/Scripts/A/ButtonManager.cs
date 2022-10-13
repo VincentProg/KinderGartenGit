@@ -6,11 +6,14 @@ using UnityEngine;
 public class ButtonManager : MonoBehaviour
 {
     public MinigameManager minigameManager;
+
+    public int playerId;
     
     /*
      * Le niveau de pression correspond au nombre de boutons pressés. Si 3 boutons au repos, pressionLevel = 3
      */
     public int pressionLevel = 2;
+    private int _lastPressionLevel = 2;
     
 
     /*
@@ -31,6 +34,16 @@ public class ButtonManager : MonoBehaviour
 
     private void Update()
     {
+        if (_lastPressionLevel > 0)
+        {
+            PlayersManager.instance.setPlayerAnim(playerId, true);
+            Debug.Log(_lastPressionLevel);
+        }
+        else
+        {
+            PlayersManager.instance.setPlayerAnim(playerId, false);
+            Debug.Log(_lastPressionLevel);
+        }
         for (int i = 0; i < pressionLevelsButton.Length; i++)
         {
             if (Input.GetKeyDown(pressionLevelsButton[i]))
@@ -46,5 +59,7 @@ public class ButtonManager : MonoBehaviour
                 Debug.Log(pressionLevel);
             }
         }
+
+        _lastPressionLevel = pressionLevel;
     }
 }

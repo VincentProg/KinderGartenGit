@@ -6,12 +6,6 @@ using UnityEngine.Events;
 public class Leash : MonoBehaviour
 {
     public static Leash instance;
-    [Range(0,2)]
-    int stateP1;
-    int stateP2;
-    // 0 = mou
-    // 1 = tendu
-    // 2 = très tendu
 
     public float maxTimeWroughtUp;
     private float currenTimerWroughtUp;
@@ -35,7 +29,7 @@ public class Leash : MonoBehaviour
     {
         if (isEnded) return;
 
-        if(stateP1 == 1 && stateP2 == 1)
+        if(PlayersManager.instance.buttonManagerP1.pressionLevel == 1 && PlayersManager.instance.buttonManagerP2.pressionLevel == 1)
         {
             Debug.Log(currenTimerWroughtUp);
             currenTimerWroughtUp += Time.deltaTime;
@@ -52,17 +46,7 @@ public class Leash : MonoBehaviour
         l1.SetPosition(1, posKid.position);
         l2.SetPosition(0, pos2.position);
         l2.SetPosition(1, posKid.position);
-       
     }
-
-    public void ChangeState(int idPlayer, int idState)
-    {
-        if (idPlayer == 1)
-            stateP1 = idState;
-        else
-            stateP2 = idState;
-    }
-
 
     public void OnMaxTimeWroughtUpdReached()
     {
