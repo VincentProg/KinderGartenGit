@@ -19,9 +19,12 @@ public class EndManager : MonoBehaviour
         if (!isEnd)
             return;
 
-        if (Input.GetKeyDown(returnToMenuKey) && sceneManager != null)
+        if (Input.GetKeyDown(returnToMenuKey))
         {
-            sceneManager.LaunchScene(0);
+            if (sceneManager != null)
+                sceneManager.LaunchScene(0);
+            else
+                Debug.LogError("No <Menu> script, cannot return to menu.");
         }
     }
 
@@ -36,8 +39,21 @@ public class EndManager : MonoBehaviour
                 // Win
                 player.playerUI.FadeIn(Color.black, 1f, () =>
                 {
-                    player.playerUI.FadeOut(Color.black, 1f, null);
+                    Transform pTransform = player.transform;
+            
+                    /*
+                     * Disable all player visual components
+                     */
+                    for (int i = 0; i < pTransform.childCount; ++i)
+                    {
+                        if (pTransform.GetChild(i).GetComponent<SpriteRenderer>() != null)
+                        {
+                            pTransform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+                    
                     player.playerUI.EndUI(true);
+                    player.playerUI.FadeOut(Color.black, 1f, null);
                 });
             }
             else
@@ -45,8 +61,21 @@ public class EndManager : MonoBehaviour
                 // Lose
                 player.playerUI.FadeIn(Color.black, 1f, () =>
                 {
-                    player.playerUI.FadeOut(Color.black, 1f, null);
+                    Transform pTransform = player.transform;
+            
+                    /*
+                     * Disable all player visual components
+                     */
+                    for (int i = 0; i < pTransform.childCount; ++i)
+                    {
+                        if (pTransform.GetChild(i).GetComponent<SpriteRenderer>() != null)
+                        {
+                            pTransform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+                    
                     player.playerUI.EndUI(false);
+                    player.playerUI.FadeOut(Color.black, 1f, null);
                 });
             }
         }

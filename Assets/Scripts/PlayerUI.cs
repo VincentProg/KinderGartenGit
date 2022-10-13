@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private GameObject winObject;
-    [SerializeField] private GameObject loseObject;
+    [Space]
+    [SerializeField] private SpriteRenderer loseParentSR;
     [Space] 
     [SerializeField] private Image colorTransitionImage;
 
@@ -20,7 +21,12 @@ public class PlayerUI : MonoBehaviour
     public void EndUI(bool _isWin)
     {
         winObject.SetActive(_isWin);
-        loseObject.SetActive(!_isWin);
+
+        if (!_isWin)
+        {
+            loseParentSR.gameObject.SetActive(true);
+            GameDatasManager.instance.kid.gameObject.SetActive(false);
+        }
     }
 
     public void FadeIn(Color _fadeColor, float _time, OnFadeEnd _onFadeEnd)

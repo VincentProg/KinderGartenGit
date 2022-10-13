@@ -7,15 +7,12 @@ public class Leash : MonoBehaviour
 {
     public static Leash instance;
 
-    public float maxTimeWroughtUp;
-    private float currenTimerWroughtUp;
-    public UnityEvent maxTimeWroughtUpReached;
-    private bool isEnded;
-
     [SerializeField]
     LineRenderer l1, l2;
     [SerializeField]
     Transform pos1, pos2, posKid;
+
+    Kid kid;
 
     private void Awake()
     {
@@ -25,9 +22,10 @@ public class Leash : MonoBehaviour
         }
     }
 
-    public void Update()
+    private void Start()
     {
-        if (isEnded) return;
+       kid = FindObjectOfType<Kid>();
+    }
 
         if(PlayersManager.instance.buttonManagerP1.pressionLevel == 1 && PlayersManager.instance.buttonManagerP2.pressionLevel == 1)
         {
