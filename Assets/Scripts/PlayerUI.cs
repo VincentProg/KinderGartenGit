@@ -28,6 +28,10 @@ public class PlayerUI : MonoBehaviour
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
+        onFadeInEnd = _onFadeEnd;
+        
+        colorTransitionImage.gameObject.SetActive(true);
+
         fadeCoroutine = StartCoroutine(Fade(true, _time, _fadeColor));
     }
 
@@ -35,6 +39,10 @@ public class PlayerUI : MonoBehaviour
     {
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
+
+        onFadeOutEnd = _onFadeEnd;
+        
+        colorTransitionImage.gameObject.SetActive(true);
 
         fadeCoroutine = StartCoroutine(Fade(false, _time, _fadeColor));
     }
@@ -44,7 +52,7 @@ public class PlayerUI : MonoBehaviour
         float t = 0f;
 
         float startA = _isFadingIn ? 0f : 1f;
-        float endA = 1 - startA;
+        float endA = 1f - startA;
 
         while (t <= 1f)
         {
@@ -56,6 +64,8 @@ public class PlayerUI : MonoBehaviour
 
             yield return null;
         }
+        
+        colorTransitionImage.gameObject.SetActive(false);
         
         if (_isFadingIn)
             onFadeInEnd?.Invoke();
