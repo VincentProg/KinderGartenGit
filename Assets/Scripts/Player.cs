@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     [ContextMenu("AddStep")]
     private void AddStep()
     {
+        
         playerSteps.MoveSteps(1);
     }
     

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Kid : MonoBehaviour
 {
-    private Action<bool> afterKidMoved;
+    private Action afterKidMoved;
     private Coroutine kidMoveCoroutine;
 
     private bool isChoked;
 
     [SerializeField] private float moveTime;
 
-    public void MoveKid(int _steps, float _stepSize, Action<bool> _afterKidMoved)
+    public void MoveKid(int _steps, float _stepSize, Action _afterKidMoved)
     {
         afterKidMoved = _afterKidMoved;
         
@@ -40,7 +40,7 @@ public class Kid : MonoBehaviour
             yield return null;
         }
 
-        afterKidMoved?.Invoke(true);
+        afterKidMoved?.Invoke();
     }
 
     public void ChokeState(bool _isChoked)
