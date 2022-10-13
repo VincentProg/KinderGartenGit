@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class MinigameManager : MonoBehaviour
 {
+    
     public enum MG
     {
         TETE,
@@ -26,10 +27,6 @@ public class MinigameManager : MonoBehaviour
 
     private float timer = 0;
 
-    /*
-     * Le niveau de pression correspond au nombre de boutons pressés. Si 3 boutons au repos, pressionLevel = 3
-     */
-    private int pressionLevel = 2;
 
     private void Start()
     {
@@ -64,11 +61,11 @@ public class MinigameManager : MonoBehaviour
             StartMinigame(MG.TETE);
             return;
         }
-        
     }
     
     public void StartMinigame(MG game)
     {
+        Debug.Log(game + " MG Started");
         if (currentMG != null)
             currentMG.StopGame();
         switch (game)
@@ -89,28 +86,15 @@ public class MinigameManager : MonoBehaviour
         currentMG.StartGame();
     }
 
-    public int GetPressionLevel()
-    {
-        return pressionLevel;
-    }
-
     public void PressButton(int id)
     {
         if(currentMG != null)
             currentMG.PressButton(id);
-        pressionLevel = id;
     }
     public void ReleaseButton(int id)
     {
         if(currentMG != null)
             currentMG.ReleaseButton(id);
-        
-        pressionLevel = id - 1;
-
-        Debug.Log(pressionLevel);
-        
-        if(pressionLevel == 0) Decapitate();
-        
     }
 
 

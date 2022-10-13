@@ -10,6 +10,8 @@ public class PopupManager : MonoBehaviour
 
     public static PopupManager instance;
 
+    private Coroutine routine;
+
     public PopupManager()
     {
         if (instance == null)
@@ -22,14 +24,19 @@ public class PopupManager : MonoBehaviour
         text.gameObject.SetActive(false);
     }
 
-    public void showPopup(String textToDisplay, Color color, Vector2 position, float durationInSeconds)
+    public void showPopup(String textToDisplay, Color color, Vector2 position)
     {
+        if (routine != null) StopCoroutine(routine);
         text.text = textToDisplay;
         text.color = color;
         text.transform.localPosition = position;
 
         text.gameObject.SetActive(true);
-        StartCoroutine(DeactivateText(durationInSeconds));
+    }
+    public void showPopup(String textToDisplay, Color color, Vector2 position, float durationInSeconds)
+    {
+        showPopup(textToDisplay, color, position);
+        routine = StartCoroutine(DeactivateText(durationInSeconds));
     }
 
     IEnumerator DeactivateText(float seconds)
