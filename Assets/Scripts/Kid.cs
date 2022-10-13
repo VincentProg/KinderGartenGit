@@ -11,6 +11,35 @@ public class Kid : MonoBehaviour
 
     [SerializeField] private float moveTime;
 
+    private bool isDead;
+
+    private bool isChocking;
+    public float maxTimeChocking;
+    private float currentTimeChocking;
+    private bool isInChockState;
+    public Color startColor;
+    public Color redColor;
+    public SpriteRenderer headSprite;
+
+    ObjectShake shaker;
+
+    public GameObject bodyDeath;
+
+    private void Start()
+    {
+        shaker = GetComponentInChildren<ObjectShake>();
+    }
+    private void Update()
+    {
+        if (isDead) return;
+
+        if (isChocking)
+        {
+            Chocking();
+        }
+    }
+
+
     public void MoveKid(int _steps, float _stepSize, Action<bool> _afterKidMoved)
     {
         afterKidMoved = _afterKidMoved;
@@ -43,14 +72,56 @@ public class Kid : MonoBehaviour
         afterKidMoved?.Invoke(true);
     }
 
-    public void ChokeState(bool _isChoked)
+
+    public void StartChocking()
     {
-        if (isChoked && _isChoked)
+        isChocking = true;
+        isInChockState = true;
+        shaker.StartShake();
+    }
+
+    private void Chocking()
+    {
+        if (isInChockState)
         {
-            // Explode ?
-            return;
+            currentTimeChocking += Time.deltaTime / maxTimeChocking;
+            headSprite.color = Color.Lerp(startColor, redColor, currentTimeChocking);
+            shaker.SetIntensity(currentTimeChocking);
+
+            if (currentTimeChocking >= 1)
+            {
+                currentTimeChocking = 1;
+                Death();
+            }
+        } else
+        {
+            currentTimeChocking -= Time.deltaTime / maxTimeChocking;
+            headSprite.color = Color.Lerp(startColor, redColor, currentTimeChocking);
+            shaker.SetIntensity(currentTimeChocking);
+            if (currentTimeChocking <= 0)
+            {
+                currentTimeChocking = 0;
+                isChocking = false;
+            }
         }
-        
-        isChoked = _isChoked;
+    }
+
+    public void StopChocking()
+    {
+        isInChockState = false;
+        shaker.StopShake();
+    }
+
+    private void Death()
+    {
+        isInChockState = false;
+        isChocking = false;
+        shaker.StopShake();
+        bodyDeath.SetActive(true);
+        Rigidbody rb = headSprite.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.AddForce(new Vector3(3, 5), ForceMode.Impulse);
+        rb.AddTorque(new Vector3(0, 0, -5));
+
     }
 }
