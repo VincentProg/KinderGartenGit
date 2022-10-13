@@ -30,7 +30,14 @@ public class Player : MonoBehaviour
         playerSteps.Initialize(playerIndex, GameDatasManager.instance.WinStep, GameDatasManager.instance.endManager.End);
         anim = GetComponent<Animator>();
     }
-    public void PullLeash( int id)
+
+    [ContextMenu("AddStep")]
+    private void AddStep()
+    {
+        playerSteps.MoveSteps(1);
+    }
+    
+    public void PullLeash(int id)
     {
         Leash.instance.ChangeState(PlayerIndex, id);
         anim.SetBool("isPulling", true);
