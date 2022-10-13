@@ -38,16 +38,13 @@ public class Player : MonoBehaviour
         playerSteps.MoveSteps(1);
     }
     
-    public void PullLeash(int id)
+    public void PullLeash()
     {
-        Leash.instance.ChangeState(PlayerIndex, id);
         anim.SetBool("isPulling", true);
     }
 
     public void Relax()
     {
-        Leash.instance.ChangeState(PlayerIndex, 0);
         anim.SetBool("isPulling", false);
-
     }
 }

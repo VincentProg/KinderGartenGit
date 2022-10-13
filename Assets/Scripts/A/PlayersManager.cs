@@ -8,9 +8,14 @@ public class PlayersManager : MonoBehaviour
     public static PlayersManager instance;
     
     public MinigameManager MGManager;
+
+    public Player P1;
+    public Player P2;
     
     public ButtonManager buttonManagerP1;
     public ButtonManager buttonManagerP2;
+
+    public Leash leash;
 
 
     private void Awake()
@@ -38,5 +43,19 @@ public class PlayersManager : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void setPlayerAnim(int playerID, bool pullLeash)
+    {
+        if (playerID == 1)
+        {
+            if(pullLeash) P1.PullLeash();
+            else P1.Relax();
+        }
+        else if (playerID == 2)
+        {
+            if(pullLeash) P2.PullLeash();
+            else P2.Relax();
+        }
     }
 }
