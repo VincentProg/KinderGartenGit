@@ -26,7 +26,9 @@ public class GameTete : Game
         _dualStarted = false;
         
         PopupManager.instance.showPopup("Tirez la laisse au maximum ! Le premier à lacher dans les 5 prochaines secondes a perdu.", Color.white, new Vector2(
-            0, 100));
+            0, 100), 1); 
+        PopupManager.instance.showPopup("Tirez la laisse au maximum ! Le premier à lacher dans les 5 prochaines secondes a perdu.", Color.white, new Vector2(
+            0, 100), 2);
     }
 
     public override void Update()
@@ -41,19 +43,22 @@ public class GameTete : Game
                 {
                     if (PlayersManager.instance.GetPressionLevel(1) != 0)
                     {
-                        PopupManager.instance.showPopup("Player 1 Lost", Color.white, new Vector2(0, 100), 5f);
+                        PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),1,5f);
+                        PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),2,5f);
                         _gameStarted = false;
                     }
 
                     if (PlayersManager.instance.GetPressionLevel(2) != 0)
                     {
-                        PopupManager.instance.showPopup("Player 2 Lost", Color.white, new Vector2(0, 100), 5f);
+                        PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),1,5f);
+                        PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),2,5f);
                         _gameStarted = false;
                     }
                 }
                 else
                 {
-                    Debug.Log("Both lost");
+                    PopupManager.instance.showPopup("5 secondes dépassées, vous avez tous les deux perdu !", Color.white, new Vector2(0, 100),1,5f);
+                    PopupManager.instance.showPopup("5 secondes dépassées, vous avez tous les deux perdu !", Color.white, new Vector2(0, 100),2,5f);
                     _gameStarted = false;
                 }
                 Debug.Log(timer);
