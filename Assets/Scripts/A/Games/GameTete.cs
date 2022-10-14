@@ -44,6 +44,8 @@ public class GameTete : Game
                         PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),1,5f);
                         PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),2,5f);
                         _gameStarted = false;
+                        
+                        onMinigameEnds?.Invoke(1);
                     }
 
                     if (PlayersManager.instance.GetPressionLevel(2) != 0)
@@ -51,6 +53,8 @@ public class GameTete : Game
                         PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),1,5f);
                         PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),2,5f);
                         _gameStarted = false;
+                        
+                        onMinigameEnds?.Invoke(2);
                     }
                 }
                 else
@@ -58,6 +62,8 @@ public class GameTete : Game
                     PopupManager.instance.showPopup("5 secondes dépassées, vous avez tous les deux perdu !", Color.white, new Vector2(0, 100),1,5f);
                     PopupManager.instance.showPopup("5 secondes dépassées, vous avez tous les deux perdu !", Color.white, new Vector2(0, 100),2,5f);
                     _gameStarted = false;
+                    
+                    onMinigameEnds?.Invoke(-1);
                 }
                 Debug.Log(timer);
             }
