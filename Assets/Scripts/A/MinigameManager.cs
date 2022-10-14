@@ -53,7 +53,7 @@ public class MinigameManager : MonoBehaviour
         float random = Random.Range(0f, 1f);
         Debug.LogWarning(random);
 
-        if (random < 0f)
+        if (random < .5f)
         {
             StartMinigame(MG.TETE);
         }
