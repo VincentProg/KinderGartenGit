@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Kid : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class Kid : MonoBehaviour
     ObjectShake shaker;
 
     public GameObject bodyDeath;
+
+    [Space] 
+    public UnityEvent onKidDeath;
 
     private void Start()
     {
@@ -123,5 +127,7 @@ public class Kid : MonoBehaviour
         rb.AddForce(new Vector3(3, 5), ForceMode.Impulse);
         rb.AddTorque(new Vector3(0, 0, -5));
 
+        onKidDeath?.Invoke();
+        GameDatasManager.instance.endManager.PlayersLose();
     }
 }

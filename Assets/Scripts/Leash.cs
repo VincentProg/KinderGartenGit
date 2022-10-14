@@ -11,7 +11,7 @@ public class Leash : MonoBehaviour
     int stateP2;
     // 0 = mou
     // 1 = tendu
-    // 2 = très tendu
+    // 2 = trÃ¨s tendu
 
     [SerializeField]
     LineRenderer l1, l2;
