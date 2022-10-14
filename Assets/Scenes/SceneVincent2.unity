@@ -2294,7 +2294,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1498428147}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PullLeash
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2531,7 +2531,7 @@ Transform:
   m_Children:
   - {fileID: 1523658657}
   m_Father: {fileID: 1804460438}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -16.7, y: 0, z: 23.96}
 --- !u!212 &1315811755
 SpriteRenderer:
@@ -3015,7 +3015,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1804460439}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PullLeash
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3533,7 +3533,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1804460438}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 54.375, y: 188.023, z: 10.066}
 --- !u!212 &1588140547
 SpriteRenderer:
@@ -3773,7 +3773,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1804460439}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PullLeash
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4246,6 +4246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 963804655}
   - {fileID: 1315811754}
   - {fileID: 1588140546}
   - {fileID: 1046209420}
@@ -4634,7 +4635,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1498428147}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PullLeash
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
