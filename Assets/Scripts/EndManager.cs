@@ -91,5 +91,6 @@ public class EndManager : MonoBehaviour
     public void EndGame()
     {
         hasEnded = true;
+        PopupManager.instance.ClearAllPopUps();
     }
 }

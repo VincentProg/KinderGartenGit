@@ -67,4 +67,10 @@ public class PopupManager : MonoBehaviour
         else if(playerId == 2)
             textP2.gameObject.SetActive(false);
     }
+
+    public void ClearAllPopUps()
+    {
+        textP1.gameObject.SetActive(false);
+        textP2.gameObject.SetActive(false);
+    }
 }
