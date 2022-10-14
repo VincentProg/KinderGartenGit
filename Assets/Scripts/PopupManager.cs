@@ -21,7 +21,7 @@ public class PopupManager : MonoBehaviour
         else Destroy(this);
     }
 
-    private void Start()
+    private void Awake()
     {
         textP1.gameObject.SetActive(false);
         textP2.gameObject.SetActive(false);

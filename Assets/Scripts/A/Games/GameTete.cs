@@ -41,8 +41,8 @@ public class GameTete : Game
                 {
                     if (PlayersManager.instance.GetPressionLevel(1) != 0)
                     {
-                        PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),1,5f);
-                        PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),2,5f);
+                        PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),1);
+                        PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),2);
                         _gameStarted = false;
                         
                         onMinigameEnds?.Invoke(1);
@@ -50,8 +50,8 @@ public class GameTete : Game
 
                     if (PlayersManager.instance.GetPressionLevel(2) != 0)
                     {
-                        PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),1,5f);
-                        PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),2,5f);
+                        PopupManager.instance.showPopup("You Won !", Color.white, new Vector2(0, 100),1);
+                        PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),2);
                         _gameStarted = false;
                         
                         onMinigameEnds?.Invoke(2);

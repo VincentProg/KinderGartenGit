@@ -3187,9 +3187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigameManager: {fileID: 1726175550}
   playerId: 2
-  pressionLevel: 2
-  _lastPressionLevel: 2
-  pressionLevelsButton: 
+  button1: 119
+  button2: 120
+  button3: 99
+  button4: 118
 --- !u!1 &2096713654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,9 +3239,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigameManager: {fileID: 1726175550}
   playerId: 1
-  pressionLevel: 2
-  _lastPressionLevel: 2
-  pressionLevelsButton: 
+  button1: 97
+  button2: 122
+  button3: 101
+  button4: 114
 --- !u!1 &2100658314
 GameObject:
   m_ObjectHideFlags: 0
