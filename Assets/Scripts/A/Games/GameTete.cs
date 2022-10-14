@@ -69,9 +69,9 @@ public class GameTete : Game
             }
             else
             {
-                _P1Started = PlayersManager.instance.GetPressionLevel(1) == 0;
-                _P2Started = PlayersManager.instance.GetPressionLevel(2) == 0;
-                timer = 0;
+                //_P1Started = PlayersManager.instance.GetPressionLevel(1) == 0;
+                //_P2Started = PlayersManager.instance.GetPressionLevel(2) == 0;
+                //timer = 0;
             }
         }
     }
