@@ -138,6 +138,7 @@ public class MinigameManager : MonoBehaviour
     public void Decapitate()
     {
         Debug.Log("death");
+        GameDatasManager.instance.kid.StartChocking();
         GameDatasManager.instance.endManager.PlayersLose();
     }
 
