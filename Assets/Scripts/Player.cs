@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     public PlayerUI playerUI { get; private set; }
     private Animator anim;
 
+    Leash leash;
+
+    int intensityPull;
+
     [SerializeField] private Camera playerCamera;
 
     private void Awake()
@@ -29,6 +33,7 @@ public class Player : MonoBehaviour
     {
         playerSteps.Initialize(playerIndex, GameDatasManager.instance.WinStep, GameDatasManager.instance.endManager.End);
         anim = GetComponent<Animator>();
+        leash = FindObjectOfType<Leash>();
     }
 
     [ContextMenu("AddStep")]
@@ -38,13 +43,23 @@ public class Player : MonoBehaviour
         playerSteps.MoveSteps(1);
     }
     
-    public void PullLeash()
+    public void PullLeash(int intensity)
     {
         anim.SetBool("isPulling", true);
+        intensityPull++;
+        Debug.Log("Pull " + intensityPull);
+
+        leash.ChangeState(playerIndex, intensityPull);
     }
 
     public void Relax()
     {
+        intensityPull--;
+        if (intensityPull < 0) intensityPull = 0;
+        leash.ChangeState(playerIndex, intensityPull);
+        Debug.Log("Relax " + intensityPull);
+
+        if (intensityPull <= 0)
         anim.SetBool("isPulling", false);
     }
 }
