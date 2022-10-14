@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     Leash leash;
 
-    int intensityPull;
+    public int intensityPull;
 
     [SerializeField] private Camera playerCamera;
 
