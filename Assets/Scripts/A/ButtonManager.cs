@@ -8,11 +8,19 @@ public class ButtonManager : MonoBehaviour
     public MinigameManager minigameManager;
 
     public int playerId;
-
+    
     public KeyCode button1;
+    public String colorB1;
+    
     public KeyCode button2;
+    public String colorB2;
+
     public KeyCode button3;
+    public String colorB3;
+
     public KeyCode button4;
+    public String colorB4;
+
     
 
     private void Update()

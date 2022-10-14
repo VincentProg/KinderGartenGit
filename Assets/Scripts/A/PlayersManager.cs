@@ -9,6 +9,9 @@ public class PlayersManager : MonoBehaviour
 
     public MinigameManager MGManager;
 
+    public ButtonManager ButtonManagerP1;
+    public ButtonManager ButtonManagerP2;
+
     public Player P1;
     public Player P2;
 

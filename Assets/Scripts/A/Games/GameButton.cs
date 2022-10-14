@@ -23,9 +23,60 @@ public class GameButton : Game
         validatedB2P1 = false;
         validatedB1P2 = false;
         validatedB2P2 = false;
+
+        String p1b1 = "";
+        String p2b1 = "";
+        String p1b2 = "";
+        String p2b2 = "";
+        if (chosenButton1 == 1)
+        {
+            p1b1 = PlayersManager.instance.ButtonManagerP1.colorB1;
+            p2b1 = PlayersManager.instance.ButtonManagerP2.colorB1;
+        }
+        else
+        if (chosenButton1 == 2)
+        {
+            p1b1 = PlayersManager.instance.ButtonManagerP1.colorB2;
+            p2b1 = PlayersManager.instance.ButtonManagerP2.colorB2;
+        }
+        else
+        if (chosenButton1 == 3)
+        {
+            p1b1 = PlayersManager.instance.ButtonManagerP1.colorB3;
+            p2b1 = PlayersManager.instance.ButtonManagerP2.colorB3;
+        }
+        else
+        if (chosenButton1 == 4)
+        {
+            p1b1 = PlayersManager.instance.ButtonManagerP1.colorB4;
+            p2b1 = PlayersManager.instance.ButtonManagerP2.colorB4;
+        }
+        if (chosenButton2 == 1)
+        {
+            p1b2 = PlayersManager.instance.ButtonManagerP1.colorB1;
+            p2b2 = PlayersManager.instance.ButtonManagerP2.colorB1;
+        }
+        else
+        if (chosenButton2 == 2)
+        {
+            p1b2 = PlayersManager.instance.ButtonManagerP1.colorB2;
+            p2b2 = PlayersManager.instance.ButtonManagerP2.colorB2;
+        }
+        else
+        if (chosenButton2 == 3)
+        {
+            p1b2 = PlayersManager.instance.ButtonManagerP1.colorB3;
+            p2b2 = PlayersManager.instance.ButtonManagerP2.colorB3;
+        }
+        else
+        if (chosenButton2 == 4)
+        {
+            p1b2 = PlayersManager.instance.ButtonManagerP1.colorB4;
+            p2b2 = PlayersManager.instance.ButtonManagerP2.colorB4;
+        }
         
-        PopupManager.instance.showPopup("Appuyez sur les boutons " + chosenButton1 + " et " + chosenButton2, Color.white, new Vector2(0,100), 1);
-        PopupManager.instance.showPopup("Appuyez sur les boutons " + chosenButton1 + " et " + chosenButton2, Color.white, new Vector2(0,100), 2);
+        PopupManager.instance.showPopup("Appuyez sur les boutons " + p1b1 + " et " + p1b2, Color.white, new Vector2(0,100), 1);
+        PopupManager.instance.showPopup("Appuyez sur les boutons " + p2b1 + " et " + p2b2, Color.white, new Vector2(0,100), 2);
     }
 
     public override void PressExternalButton(int playerId, int id)
