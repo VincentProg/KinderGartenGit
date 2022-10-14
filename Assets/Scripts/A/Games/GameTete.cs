@@ -39,6 +39,8 @@ public class GameTete : Game
                 timer += Time.deltaTime;
                 if (timer <= 5f)
                 {
+                    PopupManager.instance.showPopup("" + ((int)timer), Color.white, new Vector2(0, 100), 1);
+                    PopupManager.instance.showPopup("" + ((int)timer), Color.white, new Vector2(0, 100), 2);
                     if (PlayersManager.instance.GetPressionLevel(1) != 0)
                     {
                         PopupManager.instance.showPopup("You lost !", Color.white, new Vector2(0, 100),1);
