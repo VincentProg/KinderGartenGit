@@ -35,6 +35,9 @@ public class MinigameManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameDatasManager.instance.endManager.HasEnded)
+            return;
+        
         if (currentMG == null)
         {
             timer += Time.deltaTime;
@@ -83,7 +86,40 @@ public class MinigameManager : MonoBehaviour
                 currentMG = null;
                 return;
         }
-        currentMG.StartGame();
+        currentMG.StartGame(EndMinigame);
+    }
+
+    private void EndMinigame(int _winnerPlayerIndex)
+    {
+        Player winnerPlayer = null;
+        
+        foreach (Player player in GameDatasManager.instance.players)
+        {
+            if (player.PlayerIndex == _winnerPlayerIndex)
+            {
+                winnerPlayer = player;
+            }
+            else
+            {
+                player.playerSteps.MoveSteps(-1);
+            }
+        }
+
+        if (winnerPlayer != null)
+        {
+            GameDatasManager.instance.kid.MoveKid(1,
+                winnerPlayer.PlayerIndex == 1 ? -winnerPlayer.playerSteps.StepSize : winnerPlayer.playerSteps.StepSize,
+                () =>
+                {
+                    winnerPlayer.playerSteps.MoveSteps(1);
+                    this.currentMG = null;
+                });
+        }
+        else
+        {
+            // Both lose, kid death
+            Decapitate();
+        }
     }
 
     public void PressButton(int id)
@@ -91,6 +127,7 @@ public class MinigameManager : MonoBehaviour
         if(currentMG != null)
             currentMG.PressButton(id);
     }
+    
     public void ReleaseButton(int id)
     {
         if(currentMG != null)
@@ -100,7 +137,8 @@ public class MinigameManager : MonoBehaviour
 
     public void Decapitate()
     {
-        Debug.Log("deth");
+        Debug.Log("death");
+        GameDatasManager.instance.endManager.PlayersLose();
     }
 
 }

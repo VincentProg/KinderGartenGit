@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GameMou : Game
 {
-    public override void StartGame()
+    public override void StartGame(Action<int> _onMinigameEnds)
     {
+        onMinigameEnds = _onMinigameEnds;
         Debug.Log("oui");
     }
     

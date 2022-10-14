@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
 
 public class EndManager : MonoBehaviour
 {
     private Menu sceneManager;
     
-    private bool isEnd;
+    private bool hasEnded;
+    public bool HasEnded { get; private set; }
 
     [SerializeField] private KeyCode returnToMenuKey;
 
@@ -16,7 +16,7 @@ public class EndManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isEnd)
+        if (!hasEnded)
             return;
 
         if (Input.GetKeyDown(returnToMenuKey))
@@ -30,6 +30,8 @@ public class EndManager : MonoBehaviour
 
     public void End(int _playerIndex)
     {
+        EndGame();
+        
         Player[] players = GameDatasManager.instance.players;
 
         foreach (Player player in players)
@@ -83,6 +85,8 @@ public class EndManager : MonoBehaviour
 
     public void PlayersLose()
     {
+        EndGame();
+        
         Player[] players = GameDatasManager.instance.players;
 
         foreach (Player player in players)
@@ -108,8 +112,8 @@ public class EndManager : MonoBehaviour
         }
     }
 
-    public void HasEnded()
+    public void EndGame()
     {
-        isEnd = true;
+        hasEnded = true;
     }
 }
