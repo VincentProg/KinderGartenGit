@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         playerSteps.MoveSteps(1);
     }
     
-    public void PullLeash(int intensity)
+    public void PullLeash()
     {
         anim.SetBool("isPulling", true);
         intensityPull++;
