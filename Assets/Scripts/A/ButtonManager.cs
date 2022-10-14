@@ -18,10 +18,7 @@ public class ButtonManager : MonoBehaviour
     public KeyCode button3;
     public String colorB3;
 
-    public KeyCode button4;
-    public String colorB4;
 
-    
 
     private void Update()
     {
@@ -36,10 +33,6 @@ public class ButtonManager : MonoBehaviour
         if (Input.GetKeyDown(button3))
         {
             minigameManager.PressExternalButton(playerId, 3);
-        }
-        if (Input.GetKeyDown(button4))
-        {
-            minigameManager.PressExternalButton(playerId, 4);
         }
     }
 }

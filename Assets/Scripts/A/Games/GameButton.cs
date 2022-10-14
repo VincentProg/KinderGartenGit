@@ -17,7 +17,7 @@ public class GameButton : Game
         onMinigameEnds = _onMinigameEnds;
 
         chosenButton1 = Random.Range(1, 3);
-        chosenButton2 = Random.Range(3, 5);
+        chosenButton2 = 3;
         
         validatedB1P1 = false;
         validatedB2P1 = false;
@@ -45,12 +45,6 @@ public class GameButton : Game
             p1b1 = PlayersManager.instance.ButtonManagerP1.colorB3;
             p2b1 = PlayersManager.instance.ButtonManagerP2.colorB3;
         }
-        else
-        if (chosenButton1 == 4)
-        {
-            p1b1 = PlayersManager.instance.ButtonManagerP1.colorB4;
-            p2b1 = PlayersManager.instance.ButtonManagerP2.colorB4;
-        }
         if (chosenButton2 == 1)
         {
             p1b2 = PlayersManager.instance.ButtonManagerP1.colorB1;
@@ -67,12 +61,6 @@ public class GameButton : Game
         {
             p1b2 = PlayersManager.instance.ButtonManagerP1.colorB3;
             p2b2 = PlayersManager.instance.ButtonManagerP2.colorB3;
-        }
-        else
-        if (chosenButton2 == 4)
-        {
-            p1b2 = PlayersManager.instance.ButtonManagerP1.colorB4;
-            p2b2 = PlayersManager.instance.ButtonManagerP2.colorB4;
         }
         
         PopupManager.instance.showPopup("Appuyez sur les boutons " + p1b1 + " et " + p1b2, Color.white, new Vector2(0,100), 1);
