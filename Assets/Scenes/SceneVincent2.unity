@@ -515,6 +515,50 @@ MonoBehaviour:
   unpressEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &160731889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160731890}
+  - component: {fileID: 160731891}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &160731890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160731889}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.833071, y: -3.8869524, z: 4.762579}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1821201978}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &160731891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160731889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6731ee4b5e6dd5d4b98d2ebbc36ff818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &175932731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,11 +1604,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MGManager: {fileID: 1726175550}
-  ButtonManagerP1: {fileID: 0}
-  ButtonManagerP2: {fileID: 0}
+  ButtonManagerP1: {fileID: 2096713656}
+  ButtonManagerP2: {fileID: 2039951181}
   P1: {fileID: 1804460439}
   P2: {fileID: 1498428147}
-  leash: {fileID: 0}
+  leash: {fileID: 2109410719}
 --- !u!1 &544437703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4672,6 +4716,7 @@ Transform:
   - {fileID: 2039951180}
   - {fileID: 1128406962}
   - {fileID: 2084883523}
+  - {fileID: 160731890}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5027,13 +5072,11 @@ MonoBehaviour:
   minigameManager: {fileID: 1726175550}
   playerId: 2
   button1: 119
-  colorB1: 
+  colorB1: Vert
   button2: 120
-  colorB2: 
+  colorB2: Noir droite
   button3: 99
-  colorB3: 
-  button4: 118
-  colorB4: 
+  colorB3: Noir gauche
 --- !u!1 &2056458861
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,13 +5281,11 @@ MonoBehaviour:
   minigameManager: {fileID: 1726175550}
   playerId: 1
   button1: 97
-  colorB1: 
+  colorB1: Noir Droite
   button2: 122
-  colorB2: 
+  colorB2: Noir Gauche
   button3: 101
-  colorB3: 
-  button4: 114
-  colorB4: 
+  colorB3: Vert
 --- !u!1 &2109410718
 GameObject:
   m_ObjectHideFlags: 0

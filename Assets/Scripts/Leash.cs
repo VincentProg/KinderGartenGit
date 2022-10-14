@@ -48,7 +48,7 @@ public class Leash : MonoBehaviour
         else
             stateP2 = idState;
 
-        if (stateP1 == 2 && stateP2 == stateP1)
+        if (stateP1 == 1 && stateP2 == stateP1)
         {
             kid.StartChocking();
         }
