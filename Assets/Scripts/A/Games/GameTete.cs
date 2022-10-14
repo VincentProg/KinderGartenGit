@@ -23,6 +23,8 @@ public class GameTete : Game
         _P1Started = false;
         _P2Started = false;
         _gameStarted = true;
+
+        onMinigameEnds = _onMinigameEnds;
         
         PopupManager.instance.showPopup("Tirez la laisse au maximum ! Le premier à lacher dans les 5 prochaines secondes a perdu.", Color.white, new Vector2(
             0, 100), 1); 
@@ -65,7 +67,6 @@ public class GameTete : Game
                     
                     onMinigameEnds?.Invoke(-1);
                 }
-                Debug.Log(timer);
             }
             else
             {

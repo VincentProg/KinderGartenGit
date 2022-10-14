@@ -86,7 +86,7 @@ public class MinigameManager : MonoBehaviour
     private void EndMinigame(int _winnerPlayerIndex)
     {
         Player winnerPlayer = null;
-        
+
         foreach (Player player in GameDatasManager.instance.players)
         {
             if (player.PlayerIndex == _winnerPlayerIndex)
