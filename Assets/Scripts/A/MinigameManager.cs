@@ -11,8 +11,7 @@ public class MinigameManager : MonoBehaviour
     public enum MG
     {
         TETE,
-        MOU,
-        LACHER,
+        BUTTON,
         NONE
     }
 
@@ -22,16 +21,9 @@ public class MinigameManager : MonoBehaviour
 
     private Game currentMG;
     private Game gameTete = new GameTete();
-    private Game gameMou = new GameMou();
-    private Game gameLacher = new GameLacher();
+    private Game gameButton = new GameButton();
 
     private float timer = 0;
-
-
-    private void Start()
-    {
-        StartMinigame(MG.TETE);
-    }
 
     private void Update()
     {
@@ -41,10 +33,10 @@ public class MinigameManager : MonoBehaviour
         if (currentMG == null)
         {
             timer += Time.deltaTime;
-            if (timer >= 5f)
+            if (timer >= randomGameDelay)
             {
-                timer -= 5f;
-                if (Random.Range(0, 1) < randomGameDelay)
+                timer -= randomGameDelay;
+                if (Random.Range(0, 1) < chanceToStartGame)
                 {
                     StartRandomGame();
                 }
@@ -58,11 +50,16 @@ public class MinigameManager : MonoBehaviour
 
     public void StartRandomGame()
     {
-        /*  */
-        if (currentMG == null)
+        float random = Random.Range(0f, 1f);
+        Debug.LogWarning(random);
+
+        if (random < 0f)
         {
             StartMinigame(MG.TETE);
-            return;
+        }
+        else
+        {
+            StartMinigame(MG.BUTTON);
         }
     }
     
@@ -76,11 +73,8 @@ public class MinigameManager : MonoBehaviour
             case MG.TETE:
                 currentMG = gameTete;
                 break;
-            case MG.MOU:
-                currentMG = gameMou;
-                break;
-            case MG.LACHER:
-                currentMG = gameLacher;
+            case MG.BUTTON:
+                currentMG = gameButton;
                 break;
             case MG.NONE:
                 currentMG = null;
@@ -132,6 +126,13 @@ public class MinigameManager : MonoBehaviour
     {
         if(currentMG != null)
             currentMG.ReleaseButton(id);
+    }
+
+    public void PressExternalButton(int playerId, int id)
+    {
+        Debug.LogWarning(playerId + " " + id);
+        if(currentMG != null)
+            currentMG.PressExternalButton(playerId, id);
     }
 
 

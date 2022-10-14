@@ -15,6 +15,11 @@
 //    public int pressionLevel = 2;
 //    private int _lastPressionLevel = 2;
     
+    public KeyCode button1;
+    public KeyCode button2;
+    public KeyCode button3;
+    public KeyCode button4;
+    
 
 //    /*
 //     * KeyCodes des boutons de pression. De l'intérieur vers l'extérieur
