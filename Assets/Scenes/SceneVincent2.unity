@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fe9aef44e11a746950d3ab55f76227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnToMenuKey: 0
+  returnToMenuKey: 27
 --- !u!114 &99779084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5032,8 +5032,6 @@ MonoBehaviour:
   colorB2: 
   button3: 99
   colorB3: 
-  button4: 118
-  colorB4: 
 --- !u!1 &2056458861
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,8 +5241,6 @@ MonoBehaviour:
   colorB2: 
   button3: 101
   colorB3: 
-  button4: 114
-  colorB4: 
 --- !u!1 &2109410718
 GameObject:
   m_ObjectHideFlags: 0
