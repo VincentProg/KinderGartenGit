@@ -89,8 +89,21 @@ public class EndManager : MonoBehaviour
         {
             player.playerUI.FadeIn(Color.black, 1f, () =>
             {
-                player.playerUI.FadeOut(Color.black, 1f, null);
+                Transform pTransform = player.transform;
+            
+                /*
+                 * Disable all player visual components
+                 */
+                for (int i = 0; i < pTransform.childCount; ++i)
+                {
+                    if (pTransform.GetChild(i).GetComponent<SpriteRenderer>() != null)
+                    {
+                        pTransform.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
+                    
                 player.playerUI.EndUI(false);
+                player.playerUI.FadeOut(Color.black, 1f, null);
             });
         }
     }

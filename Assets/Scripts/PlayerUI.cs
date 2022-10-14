@@ -25,7 +25,9 @@ public class PlayerUI : MonoBehaviour
         if (!_isWin)
         {
             loseParentSR.gameObject.SetActive(true);
-            GameDatasManager.instance.kid.gameObject.SetActive(false);
+            
+            if (GameDatasManager.instance.kid.gameObject.activeSelf)
+                GameDatasManager.instance.kid.gameObject.SetActive(false);
         }
     }
 
