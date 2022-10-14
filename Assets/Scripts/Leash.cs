@@ -6,6 +6,12 @@ using UnityEngine.Events;
 public class Leash : MonoBehaviour
 {
     public static Leash instance;
+    [Range(0, 2)]
+    int stateP1;
+    int stateP2;
+    // 0 = mou
+    // 1 = tendu
+    // 2 = très tendu
 
     [SerializeField]
     LineRenderer l1, l2;
@@ -16,7 +22,7 @@ public class Leash : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -24,33 +30,34 @@ public class Leash : MonoBehaviour
 
     private void Start()
     {
-       kid = FindObjectOfType<Kid>();
+        kid = FindObjectOfType<Kid>();
     }
 
-        if(PlayersManager.instance.buttonManagerP1.pressionLevel == 1 && PlayersManager.instance.buttonManagerP2.pressionLevel == 1)
-        {
-            Debug.Log(currenTimerWroughtUp);
-            currenTimerWroughtUp += Time.deltaTime;
-            if(currenTimerWroughtUp >= maxTimeWroughtUp)
-            {
-                OnMaxTimeWroughtUpdReached();
-            }
-        } else
-        {
-            currenTimerWroughtUp = 0;
-        }
-
+    public void Update()
+    {
         l1.SetPosition(0, pos1.position);
         l1.SetPosition(1, posKid.position);
         l2.SetPosition(0, pos2.position);
         l2.SetPosition(1, posKid.position);
     }
 
-    public void OnMaxTimeWroughtUpdReached()
+    public void ChangeState(int idPlayer, int idState)
     {
-        maxTimeWroughtUpReached.Invoke();
-        isEnded = true;
-        Debug.Log("ChildDead");
+        if (idPlayer == 1)
+            stateP1 = idState;
+        else
+            stateP2 = idState;
+
+        if (stateP1 == 1 && stateP2 == stateP1)
+        {
+            kid.StartChocking();
+        }
+        else
+        {
+            kid.StopChocking();
+        }
     }
+
+
 
 }
